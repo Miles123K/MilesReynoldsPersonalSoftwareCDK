@@ -16,7 +16,7 @@ export class PipelineStack extends Stack {
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub(
           "Miles123K/MilesReynoldsPersonalSoftwareCDK",
-          "main",
+          "master",
           {
             authentication: SecretValue.secretsManager(
               "personal/Github/Access"
