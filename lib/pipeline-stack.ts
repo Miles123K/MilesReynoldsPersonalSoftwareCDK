@@ -5,6 +5,7 @@ import {
   ShellStep,
 } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
+import { ApplicationStage } from "./application-stage";
 
 export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -28,7 +29,12 @@ export class PipelineStack extends Stack {
       dockerEnabledForSynth: true,
     });
 
-    // TODO: add integration tests
+    const alphaStage = pipeline.addStage(
+      new ApplicationStage(this, "Alpha", {
+        stage: "alpha",
+        env: props?.env,
+      })
+    );
 
     // https://docs.aws.amazon.com/cdk/v2/guide/cdk_pipeline.html
   }

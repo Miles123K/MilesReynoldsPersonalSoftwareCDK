@@ -1,11 +1,11 @@
-import { Stack } from "aws-cdk-lib";
+import { Stack, StackProps } from "aws-cdk-lib";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
 
-interface WebsiteStackProps {
+interface WebsiteStackProps extends StackProps {
   readonly stage: string;
 }
 
@@ -25,7 +25,7 @@ export class WebsiteStack extends Stack {
     });
 
     const bucketDeployment = new BucketDeployment(this, "DeployWebsite", {
-      sources: [Source.asset("../website")],
+      sources: [Source.asset("website")],
       destinationBucket: bucket,
       distribution,
     });
