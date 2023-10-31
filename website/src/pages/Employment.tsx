@@ -79,7 +79,7 @@ export const Employment = () => {
           COSC2010/COSC160 Data Structures Course Assistant (Fall 2022, Fall
           2023).
           <br />
-          COSC051&052 Computer Science I*II Course Assistant (Fall 2021, Spring
+          COSC051&052 Computer Science I&II Course Assistant (Fall 2021, Spring
           2021).
         </Container>
         <Container

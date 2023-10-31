@@ -7,6 +7,8 @@ import Link from "@cloudscape-design/components/link";
 import Button from "@cloudscape-design/components/button";
 import Alert from "@cloudscape-design/components/alert";
 import Grid from "@cloudscape-design/components/grid";
+import { TechStack } from "../components/TechStack";
+import ColumnLayout from "@cloudscape-design/components/column-layout";
 
 export const Home = () => {
   return (
@@ -40,13 +42,13 @@ export const Home = () => {
           test out my personal projects. If you spot any bugs or have any ideas,
           please let me know by using the form on the contact page!
         </Container>
-        <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
+        <ColumnLayout columns={2}>
           <Container
             header={<Header variant="h2">About Me</Header>}
             footer={
               <SpaceBetween size="s" direction="horizontal">
                 <Button href="#/education">Education</Button>
-                <Button href="#/employment">Jiu Jitsu</Button>
+                <Button href="#/jiu-jitsu">Jiu Jitsu</Button>
               </SpaceBetween>
             }
           >
@@ -57,13 +59,32 @@ export const Home = () => {
             aerospace engineering, and political philosophy. I hold the rank of
             blue belt in Brazilian Jiu Jitsu specializing in No-Gi.
           </Container>
-          <Container header={<Header variant="h2">Current Endevaors</Header>}>
-            My courses for Fall 2023 are deep reinforcement learning,
-            distributed algorithms, advanced linear algebra, and differential
-            equations. I am also working as a software engineering consultant
-            for <Link href="https://www.gainguard.io/">GainGuard</Link>.
+          <Container
+            fitHeight
+            header={<Header variant="h2">Current Endevaors</Header>}
+            footer={
+              <SpaceBetween size="s" direction="horizontal">
+                <Button href="#/employment">Employment</Button>
+                <Button href="#/projects">Projects</Button>
+                <Button
+                  href="https://www.gainguard.io/"
+                  iconAlign="right"
+                  iconName="external"
+                >
+                  GainGuard
+                </Button>
+              </SpaceBetween>
+            }
+          >
+            For Fall 2023 I am enrolled in Deep Reinforcement Learning,
+            Distributed Algorithms, Advanced Linear Algebra, and Differential
+            Equations. I am also working as a software engineering consultant
+            for <Link href="https://www.gainguard.io/">GainGuard</Link>. I am
+            also working as a course assistant for COSC-2010 Data Structures at
+            Georgetown University.
           </Container>
-        </Grid>
+        </ColumnLayout>
+        <TechStack />
       </SpaceBetween>
     </ContentLayout>
   );

@@ -9,6 +9,8 @@ import { Home } from "./pages/Home";
 import { Education } from "./pages/Education";
 import { Employment } from "./pages/Employment";
 import { Contact } from "./pages/Contact";
+import { Projects } from "./pages/Projects";
+import { JiuJitsu } from "./pages/JiuJitsu";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/education" Component={Education} />
             <Route path="/employment" Component={Employment} />
             <Route path="/contact" Component={Contact} />
+            <Route path="/projects" Component={Projects} />
+            <Route path="/jiu-jitsu" Component={JiuJitsu} />
           </Routes>
         </HashRouter>
       }

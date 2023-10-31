@@ -6,9 +6,8 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import Link from "@cloudscape-design/components/link";
 import Button from "@cloudscape-design/components/button";
 import Alert from "@cloudscape-design/components/alert";
-import Grid from "@cloudscape-design/components/grid";
 
-export const Education = () => {
+export const Projects = () => {
   return (
     <ContentLayout
       header={
@@ -19,11 +18,11 @@ export const Education = () => {
             // description="This is a generic description used in the header."
             // actions={<Button variant="primary">Button</Button>}
           >
-            Education
+            Projects
           </Header>
           <Alert>
-            I am seeking to enroll in a MS program in Computer Science for Fall
-            2024.
+            If you have a project idea or would like to collaborate, please let
+            me know by using the form on the contact page!
           </Alert>
         </SpaceBetween>
       }
@@ -33,37 +32,21 @@ export const Education = () => {
           header={
             <Header
               variant="h2"
-              description="August 2020 - May 2024"
-              info={
-                <Link href="https://www.georgetown.edu/" target="_blank">
-                  Info
-                </Link>
+              description="Frontend Contributions"
+              actions={
+                <Button href="https://lirissmile.com/" target="_blank">
+                  Link to Site
+                </Button>
               }
             >
-              Georgetown University
+              Liri's Smile
             </Header>
           }
         >
-          I am working toward a B.S in Mathematics and B.A in Computer Science
-          with a minor in Physics.
-        </Container>
-        <Container
-          header={
-            <Header
-              variant="h2"
-              description="August 2014 - May 2020"
-              info={
-                <Link href="https://gubei-en.suis.com.cn/" target="_blank">
-                  Info
-                </Link>
-              }
-            >
-              Shanghai United International School
-            </Header>
-          }
-        >
-          I attended SUIS Gubei for high school and graduated with an IB Diploma
-          (HL - Math, Physics, Chemistry. SL - English, Chinese, History).
+          Open Source Intelligence (OSINT) tool for finding missing persons in
+          the wake of the recent war in Israel. I implemented the components and
+          workflows for authentication and missing persons information
+          submission.
         </Container>
       </SpaceBetween>
     </ContentLayout>

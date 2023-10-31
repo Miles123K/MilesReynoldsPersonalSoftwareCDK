@@ -11,12 +11,15 @@ import Form from "@cloudscape-design/components/form";
 import FormField from "@cloudscape-design/components/form-field";
 import Input from "@cloudscape-design/components/input";
 import Textarea from "@cloudscape-design/components/textarea";
+import Tiles from "@cloudscape-design/components/tiles";
 
 export const Contact = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const [issue, setIssue] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const [date, setDate] = React.useState("");
+
+  const [type, setType] = React.useState("");
 
   const onIssueFormSubmit = () => {
     if (date !== "") {
@@ -98,7 +101,7 @@ export const Contact = () => {
         header={<Header>Social Media</Header>}
       />
       <form onSubmit={(e) => e.preventDefault()}>
-        <Container header={<Header variant="h2">Issues Form</Header>}>
+        <Container header={<Header variant="h2">Contact Form</Header>}>
           <p>
             If you spot any bugs or have any ideas, please let me know by using
             the form below!
@@ -126,10 +129,21 @@ export const Contact = () => {
                   onChange={(e) => setEmail(e.detail.value)}
                 />
               </FormField>
-              <FormField label="Issue Description">
+              <FormField label="Message">
                 <Textarea
-                  value={issue}
-                  onChange={(e) => setIssue(e.detail.value)}
+                  value={message}
+                  onChange={(e) => setMessage(e.detail.value)}
+                />
+              </FormField>
+              <FormField label="Type">
+                <Tiles
+                  onChange={(e) => setType(e.detail.value)}
+                  value={type}
+                  items={[
+                    { value: "issues", label: "Issues" },
+                    { value: "ideas", label: "Ideas" },
+                    { value: "other", label: "Other" },
+                  ]}
                 />
               </FormField>
             </SpaceBetween>
