@@ -24,7 +24,7 @@ export const Home = () => {
 
           <Alert>
             As of October 2023, I am actively seeking employment as Software
-            Engineer
+            Engineer.
           </Alert>
           <Alert>
             As of October 2023, I am also applying to graduate school for MS in

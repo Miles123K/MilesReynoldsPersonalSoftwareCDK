@@ -22,6 +22,10 @@ export const Education = () => {
           >
             Education
           </Header>
+          <Alert>
+            I am seeking to enroll in a MS program in Computer Science for Fall
+            2024.
+          </Alert>
         </SpaceBetween>
       }
     >

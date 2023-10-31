@@ -99,6 +99,10 @@ export const Contact = () => {
       />
       <form onSubmit={(e) => e.preventDefault()}>
         <Container header={<Header variant="h2">Issues Form</Header>}>
+          <p>
+            If you spot any bugs or have any ideas, please let me know by using
+            the form below!
+          </p>
           <Form
             actions={
               <SpaceBetween direction="horizontal" size="xs">

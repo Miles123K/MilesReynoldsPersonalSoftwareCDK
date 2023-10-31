@@ -4,6 +4,7 @@ import Container from "@cloudscape-design/components/container";
 import Header from "@cloudscape-design/components/header";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 import Link from "@cloudscape-design/components/link";
+import Alert from "@cloudscape-design/components/alert";
 
 export const Employment = () => {
   return (
@@ -18,6 +19,9 @@ export const Employment = () => {
           >
             Employment
           </Header>
+          <Alert>
+            I am seeking New Grad Software Engineer positions for May 2024.
+          </Alert>
         </SpaceBetween>
       }
     >
