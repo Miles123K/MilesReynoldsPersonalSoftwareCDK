@@ -9,6 +9,7 @@ import Alert from "@cloudscape-design/components/alert";
 import Grid from "@cloudscape-design/components/grid";
 import { TechStack } from "../components/TechStack";
 import ColumnLayout from "@cloudscape-design/components/column-layout";
+import { AboutMe } from "../components/AboutMe";
 
 export const Home = () => {
   return (
@@ -43,27 +44,20 @@ export const Home = () => {
           please let me know by using the form on the contact page!
         </Container>
         <ColumnLayout columns={2}>
-          <Container
-            header={<Header variant="h2">About Me</Header>}
+          <AboutMe
             footer={
-              <SpaceBetween size="s" direction="horizontal">
+              <SpaceBetween size="xs" direction="horizontal">
                 <Button href="#/education">Education</Button>
                 <Button href="#/jiu-jitsu">Jiu Jitsu</Button>
+                <Button href="#/personal">Personal</Button>
               </SpaceBetween>
             }
-          >
-            I am currently a senior at Georgetown University studying Computer
-            Science and Mathematics. I am interested in full-stack development,
-            machine learning, and distributed systems. I also love learning
-            about general topics in computer science, mathematics, physics,
-            aerospace engineering, and political philosophy. I hold the rank of
-            blue belt in Brazilian Jiu Jitsu specializing in No-Gi.
-          </Container>
+          />
           <Container
             fitHeight
             header={<Header variant="h2">Current Endevaors</Header>}
             footer={
-              <SpaceBetween size="s" direction="horizontal">
+              <SpaceBetween size="xs" direction="horizontal">
                 <Button href="#/employment">Employment</Button>
                 <Button href="#/projects">Projects</Button>
                 <Button

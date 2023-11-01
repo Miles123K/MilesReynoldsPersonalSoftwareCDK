@@ -11,6 +11,7 @@ import { Employment } from "./pages/Employment";
 import { Contact } from "./pages/Contact";
 import { Projects } from "./pages/Projects";
 import { JiuJitsu } from "./pages/JiuJitsu";
+import { Personal } from "./pages/Personal";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
             <Route path="/jiu-jitsu" Component={JiuJitsu} />
+            <Route path="/personal" Component={Personal} />
           </Routes>
         </HashRouter>
       }
