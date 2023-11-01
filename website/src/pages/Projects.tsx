@@ -34,7 +34,12 @@ export const Projects = () => {
               variant="h2"
               description="Frontend Contributions"
               actions={
-                <Button href="https://lirissmile.com/" target="_blank">
+                <Button
+                  href="https://lirissmile.com/"
+                  target="_blank"
+                  iconAlign="right"
+                  iconName="external"
+                >
                   Link to Site
                 </Button>
               }

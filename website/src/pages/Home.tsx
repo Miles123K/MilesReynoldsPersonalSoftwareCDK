@@ -10,6 +10,7 @@ import Grid from "@cloudscape-design/components/grid";
 import { TechStack } from "../components/TechStack";
 import ColumnLayout from "@cloudscape-design/components/column-layout";
 import { AboutMe } from "../components/AboutMe";
+import Architecture from "../assets/Architecture";
 
 export const Home = () => {
   return (
@@ -19,7 +20,6 @@ export const Home = () => {
           <Header
             variant="h1"
             // info={<Link>Info</Link>}
-            // description="This is a generic description used in the header."
             // actions={<Button variant="primary">Button</Button>}
           >
             Welcome to Miles Reynolds' Personal Website
@@ -79,6 +79,37 @@ export const Home = () => {
           </Container>
         </ColumnLayout>
         <TechStack />
+
+        <Grid
+          gridDefinition={[
+            { colspan: { default: 12, xs: 6, s: 7, m: 8 } },
+            { colspan: { default: 12, xs: 6, s: 5, m: 4 } },
+          ]}
+        >
+          <Container
+            fitHeight
+            header={<Header variant="h2">Site Information</Header>}
+          >
+            This website is built using React, TypeScript, and the Cloudscape
+            Design System. It is hosted on AWS using S3 and CloudFront. The
+            backend is built using AWS Lambda and API Gateway. The
+            infrastructure is managed using AWS CDK. I am notified of any
+            messages sent through the contact form using AWS SNS and SES.
+          </Container>
+          <Container>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+              }}
+            >
+              <Architecture />
+            </div>
+          </Container>
+        </Grid>
       </SpaceBetween>
     </ContentLayout>
   );
