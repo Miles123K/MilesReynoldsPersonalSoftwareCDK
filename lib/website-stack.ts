@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "aws-cdk-lib";
+import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { Bucket } from "aws-cdk-lib/aws-s3";
@@ -18,6 +18,7 @@ export class WebsiteStack extends Stack {
       websiteIndexDocument: "index.html",
       websiteErrorDocument: "error.html",
       publicReadAccess: true,
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
     const distribution = new Distribution(this, "Distribution", {
