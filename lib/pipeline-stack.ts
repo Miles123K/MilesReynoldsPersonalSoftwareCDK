@@ -12,17 +12,6 @@ export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const pipelineRole = new Role(this, "PipelineRole", {
-      assumedBy: new ServicePrincipal("codepipeline.amazonaws.com"),
-    });
-
-    pipelineRole.addToPolicy(
-      new PolicyStatement({
-        actions: ["*"],
-        resources: ["*"],
-      })
-    );
-
     const pipeline = new CodePipeline(this, "ServicePipeline", {
       pipelineName: "ServicePipeline",
       synth: new ShellStep("Synth", {
@@ -39,7 +28,6 @@ export class PipelineStack extends Stack {
       }),
       dockerEnabledForSelfMutation: true,
       dockerEnabledForSynth: true,
-      role: pipelineRole,
     });
 
     const alphaStage = pipeline.addStage(
