@@ -6,11 +6,22 @@ import {
 } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
 import { ApplicationStage } from "./application-stage";
-import { PolicyStatement } from "aws-cdk-lib/aws-iam";
+import { PolicyStatement, Role, ServicePrincipal } from "aws-cdk-lib/aws-iam";
 
 export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
+
+    const pipelineRole = new Role(this, "PipelineRole", {
+      assumedBy: new ServicePrincipal("codepipeline.amazonaws.com"),
+    });
+
+    pipelineRole.addToPolicy(
+      new PolicyStatement({
+        actions: ["*"],
+        resources: ["*"],
+      })
+    );
 
     const pipeline = new CodePipeline(this, "ServicePipeline", {
       pipelineName: "ServicePipeline",
@@ -28,14 +39,8 @@ export class PipelineStack extends Stack {
       }),
       dockerEnabledForSelfMutation: true,
       dockerEnabledForSynth: true,
+      role: pipelineRole,
     });
-
-    pipeline.pipeline.addToRolePolicy(
-      new PolicyStatement({
-        actions: ["s3:*"],
-        resources: ["*"],
-      })
-    );
 
     const alphaStage = pipeline.addStage(
       new ApplicationStage(this, "Alpha", {
