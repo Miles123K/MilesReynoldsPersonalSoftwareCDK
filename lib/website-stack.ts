@@ -1,13 +1,18 @@
 import { CfnOutput, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
+import {
+  Certificate,
+  CertificateValidation,
+} from "aws-cdk-lib/aws-certificatemanager";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { ManagedPolicy, Role, ServicePrincipal } from "aws-cdk-lib/aws-iam";
 import {
-  AnyPrincipal,
-  ManagedPolicy,
-  PolicyStatement,
-  Role,
-  ServicePrincipal,
-} from "aws-cdk-lib/aws-iam";
+  ARecord,
+  AaaaRecord,
+  HostedZone,
+  RecordTarget,
+} from "aws-cdk-lib/aws-route53";
+import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import {
   BlockPublicAccess,
   Bucket,
@@ -26,21 +31,27 @@ export class WebsiteStack extends Stack {
 
     const siteBucket = new Bucket(this, "WebsiteBucket", {
       bucketName: `miles-reynolds-${props.stage}-website`,
-      websiteIndexDocument: "index.html",
-      websiteErrorDocument: "error.html",
       publicReadAccess: true,
       blockPublicAccess: BlockPublicAccess.BLOCK_ACLS,
       accessControl: BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
     });
 
-    // const logsBucket = new Bucket(this, "LogsBucket", {
-    //   bucketName: `miles-reynolds-${props.stage}-website-logs`,
-    //   removalPolicy: RemovalPolicy.DESTROY,
-    // });
+    const hostZone = HostedZone.fromHostedZoneId(
+      this,
+      "RootHostZoneId",
+      "Z08535481J9KU8GSW1BES"
+    );
+
+    const siteDomain = hostZone.zoneName;
+
+    const certificate = new Certificate(this, "Certificate", {
+      domainName: siteDomain,
+      validation: CertificateValidation.fromDns(hostZone),
+    });
 
     const distribution = new Distribution(this, "Distribution", {
       defaultBehavior: { origin: new S3Origin(siteBucket) },
-      // logBucket: logsBucket,
+      certificate,
     });
 
     const bucketDeploymentRole = new Role(this, "BucketDeploymentRole", {
@@ -55,6 +66,18 @@ export class WebsiteStack extends Stack {
       destinationBucket: siteBucket,
       distribution,
       role: bucketDeploymentRole,
+    });
+
+    new ARecord(this, "SiteAliasRecord", {
+      zone: hostZone,
+      recordName: siteDomain,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+    });
+
+    new AaaaRecord(this, "SiteAliasRecordIPv6", {
+      zone: hostZone,
+      recordName: siteDomain,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
     });
   }
 }
