@@ -6,7 +6,6 @@ import {
 } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
 import { ApplicationStage } from "./application-stage";
-import { PolicyStatement, Role, ServicePrincipal } from "aws-cdk-lib/aws-iam";
 
 export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
