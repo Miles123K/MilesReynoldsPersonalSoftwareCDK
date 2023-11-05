@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "@cloudscape-design/global-styles/index.css";
 import { AppLayout } from "@cloudscape-design/components";
