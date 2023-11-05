@@ -1,4 +1,4 @@
-import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
+import { CfnOutput, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
 import {
@@ -20,37 +20,35 @@ export class WebsiteStack extends Stack {
   constructor(scope: Construct, id: string, props: WebsiteStackProps) {
     super(scope, id);
 
-    const bucket = new Bucket(this, "WebsiteBucket", {
-      bucketName: `miles-reynolds-${props.stage}-website`,
-      websiteIndexDocument: "index.html",
-      websiteErrorDocument: "error.html",
-      publicReadAccess: true,
+    // const siteBucket = new Bucket(this, "WebsiteBucket", {
+    //   bucketName: `miles-reynolds-${props.stage}-website`,
+    //   websiteIndexDocument: "index.html",
+    //   websiteErrorDocument: "error.html",
+    //   publicReadAccess: true,
+    // });
+
+    const logsBucket = new Bucket(this, "LogsBucket", {
+      bucketName: `miles-reynolds-${props.stage}-website-logs`,
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    bucket.addToResourcePolicy(
-      new PolicyStatement({
-        actions: ["s3:*"],
-        resources: [bucket.bucketArn],
-        principals: [new AnyPrincipal()],
-      })
-    );
+    // const distribution = new Distribution(this, "Distribution", {
+    //   defaultBehavior: { origin: new S3Origin(siteBucket) },
+    //   logBucket: logsBucket,
+    // });
 
-    const distribution = new Distribution(this, "Distribution", {
-      defaultBehavior: { origin: new S3Origin(bucket) },
-    });
+    // const bucketDeploymentRole = new Role(this, "BucketDeploymentRole", {
+    //   assumedBy: new ServicePrincipal("lambda.amazonaws.com"),
+    //   managedPolicies: [
+    //     ManagedPolicy.fromAwsManagedPolicyName("AdministratorAccess"),
+    //   ],
+    // });
 
-    const bucketDeploymentRole = new Role(this, "BucketDeploymentRole", {
-      assumedBy: new ServicePrincipal("lambda.amazonaws.com"),
-      managedPolicies: [
-        ManagedPolicy.fromAwsManagedPolicyName("AdministratorAccess"),
-      ],
-    });
-
-    const bucketDeployment = new BucketDeployment(this, "DeployWebsite", {
-      sources: [Source.asset("website")],
-      destinationBucket: bucket,
-      distribution,
-      role: bucketDeploymentRole,
-    });
+    // const bucketDeployment = new BucketDeployment(this, "DeployWebsite", {
+    //   sources: [Source.asset("website")],
+    //   destinationBucket: siteBucket,
+    //   distribution,
+    //   role: bucketDeploymentRole,
+    // });
   }
 }
