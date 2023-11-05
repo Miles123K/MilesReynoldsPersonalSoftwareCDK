@@ -1,7 +1,13 @@
 import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
-import { ManagedPolicy, Role, ServicePrincipal } from "aws-cdk-lib/aws-iam";
+import {
+  AnyPrincipal,
+  ManagedPolicy,
+  PolicyStatement,
+  Role,
+  ServicePrincipal,
+} from "aws-cdk-lib/aws-iam";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
@@ -19,8 +25,15 @@ export class WebsiteStack extends Stack {
       websiteIndexDocument: "index.html",
       websiteErrorDocument: "error.html",
       publicReadAccess: true,
-      removalPolicy: RemovalPolicy.DESTROY,
     });
+
+    bucket.addToResourcePolicy(
+      new PolicyStatement({
+        actions: ["s3:*"],
+        resources: [bucket.bucketArn],
+        principals: [new AnyPrincipal()],
+      })
+    );
 
     const distribution = new Distribution(this, "Distribution", {
       defaultBehavior: { origin: new S3Origin(bucket) },
