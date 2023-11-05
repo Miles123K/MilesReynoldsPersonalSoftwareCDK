@@ -34,6 +34,7 @@ export class WebsiteStack extends Stack {
       publicReadAccess: true,
       blockPublicAccess: BlockPublicAccess.BLOCK_ACLS,
       accessControl: BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
+      websiteIndexDocument: "index.html",
     });
 
     const hostZone = HostedZone.fromHostedZoneAttributes(this, "HostZone", {
@@ -52,6 +53,7 @@ export class WebsiteStack extends Stack {
       defaultBehavior: { origin: new S3Origin(siteBucket) },
       certificate,
       domainNames: [siteDomain],
+      defaultRootObject: "index.html",
     });
 
     const bucketDeploymentRole = new Role(this, "BucketDeploymentRole", {
@@ -62,7 +64,7 @@ export class WebsiteStack extends Stack {
     });
 
     const bucketDeployment = new BucketDeployment(this, "DeployWebsite", {
-      sources: [Source.asset("website")],
+      sources: [Source.asset("website/build")],
       destinationBucket: siteBucket,
       distribution,
       role: bucketDeploymentRole,
