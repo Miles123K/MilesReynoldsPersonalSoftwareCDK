@@ -36,11 +36,10 @@ export class WebsiteStack extends Stack {
       accessControl: BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
     });
 
-    const hostZone = HostedZone.fromHostedZoneId(
-      this,
-      "RootHostZoneId",
-      "Z08535481J9KU8GSW1BES"
-    );
+    const hostZone = HostedZone.fromHostedZoneAttributes(this, "HostZone", {
+      hostedZoneId: "Z08535481J9KU8GSW1BES",
+      zoneName: "miles123k.com",
+    });
 
     const siteDomain = hostZone.zoneName;
 
@@ -52,6 +51,7 @@ export class WebsiteStack extends Stack {
     const distribution = new Distribution(this, "Distribution", {
       defaultBehavior: { origin: new S3Origin(siteBucket) },
       certificate,
+      domainNames: [siteDomain],
     });
 
     const bucketDeploymentRole = new Role(this, "BucketDeploymentRole", {
