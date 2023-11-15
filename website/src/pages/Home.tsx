@@ -24,15 +24,6 @@ export const Home = () => {
           >
             Welcome to Miles Reynolds' Personal Website
           </Header>
-
-          <Alert>
-            As of October 2023, I am actively seeking employment as Software
-            Engineer.
-          </Alert>
-          <Alert>
-            As of October 2023, I am also applying to graduate school for MS in
-            Computer Science.
-          </Alert>
         </SpaceBetween>
       }
     >

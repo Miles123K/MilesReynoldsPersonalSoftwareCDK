@@ -19,9 +19,6 @@ export const Employment = () => {
           >
             Employment
           </Header>
-          <Alert>
-            I am seeking New Grad Software Engineer positions for May 2024.
-          </Alert>
         </SpaceBetween>
       }
     >
