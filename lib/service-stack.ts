@@ -27,11 +27,9 @@ export class ServiceStack extends Stack {
       handler: "handler",
     });
 
-    const rootHostZone = HostedZone.fromHostedZoneId(
-      this,
-      "RootHostZone",
-      "Z08535481J9KU8GSW1BES"
-    );
+    const rootHostZone = HostedZone.fromLookup(this, "RootHostZone", {
+      domainName: "miles123k.com",
+    });
 
     const domainName = "api.miles123k.com";
     const certificate = new Certificate(this, "SiteServiceCertificate", {
