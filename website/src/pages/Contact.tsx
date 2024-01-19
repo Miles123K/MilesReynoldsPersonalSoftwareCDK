@@ -12,6 +12,7 @@ import FormField from "@cloudscape-design/components/form-field";
 import Input from "@cloudscape-design/components/input";
 import Textarea from "@cloudscape-design/components/textarea";
 import Tiles from "@cloudscape-design/components/tiles";
+import axios from "axios";
 
 export const Contact = () => {
   const [name, setName] = React.useState("");
@@ -21,11 +22,46 @@ export const Contact = () => {
 
   const [type, setType] = React.useState("");
 
+  const [errorText, setErrorText] = React.useState("");
+
+  // POST to api.miles123k.com/contact
+
   const onIssueFormSubmit = () => {
     if (date !== "") {
       return; // bot
     }
-    // TODO: implement
+    if (name === "") {
+      setErrorText("Please enter a name");
+      return;
+    }
+    if (email === "") {
+      setErrorText("Please enter an email");
+      return;
+    }
+    if (message === "") {
+      setErrorText("Please enter a message");
+      return;
+    }
+    if (type === "") {
+      setErrorText("Please enter a type");
+      return;
+    }
+    setErrorText("");
+
+    axios
+      .post("https://api.miles123k.com/contact", {
+        name,
+        email,
+        message,
+        type,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -107,6 +143,7 @@ export const Contact = () => {
             the form below!
           </p>
           <Form
+            errorText={errorText}
             actions={
               <SpaceBetween direction="horizontal" size="xs">
                 <Button formAction="none" variant="link">

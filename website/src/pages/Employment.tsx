@@ -73,6 +73,8 @@ export const Employment = () => {
             </Header>
           }
         >
+          COSC3450 Artificial Intelligence Course Assistant (Spring 2024).
+          <br />
           COSC2010/COSC160 Data Structures Course Assistant (Fall 2022, Fall
           2023).
           <br />

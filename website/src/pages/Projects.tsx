@@ -32,6 +32,31 @@ export const Projects = () => {
           header={
             <Header
               variant="h2"
+              description="Full Stack Contributions, Cloud Native System Design"
+              actions={
+                <Button
+                  href="https://www.gainguard.io/"
+                  target="_blank"
+                  iconAlign="right"
+                  iconName="external"
+                >
+                  Link to Site
+                </Button>
+              }
+            >
+              GainGuard
+            </Header>
+          }
+        >
+          Wearable sports technology startup that uses sensors and ML algorithms
+          to reduce injury and increase training efficiency among athletes. I
+          developed their React Native IOS mobile application, designed their
+          cloud architecture on AWS, and implemented various backend services.
+        </Container>
+        <Container
+          header={
+            <Header
+              variant="h2"
               description="Frontend Contributions"
               actions={
                 <Button

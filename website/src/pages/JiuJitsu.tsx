@@ -43,6 +43,10 @@ export const JiuJitsu = () => {
         cardsPerRow={[{ cards: 1 }, { minWidth: 500, cards: 2 }]}
         items={[
           {
+            name: "Georgetown University Club Jiu Jitsu",
+            location: "Washington, DC",
+          },
+          {
             name: "BETA Academy",
             location: "Washington, DC",
           },
