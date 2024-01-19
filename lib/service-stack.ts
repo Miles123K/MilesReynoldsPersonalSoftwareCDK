@@ -34,7 +34,7 @@ export class ServiceStack extends Stack {
     const domainName = "api.miles123k.com";
     const certificate = new Certificate(this, "SiteServiceCertificate", {
       domainName,
-      validation: CertificateValidation.fromDns(),
+      validation: CertificateValidation.fromDns(rootHostZone),
     });
 
     const api = new RestApi(this, "SiteServiceApi", {
