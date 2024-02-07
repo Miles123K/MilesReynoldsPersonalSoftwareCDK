@@ -28,6 +28,31 @@ export const Projects = () => {
       }
     >
       <SpaceBetween size="l">
+      <Container
+          header={
+            <Header
+              variant="h2"
+              description="Fullstack Ownership"
+              actions={
+                <Button
+                  href="https://getfluxpay.com/"
+                  target="_blank"
+                  iconAlign="right"
+                  iconName="external"
+                >
+                  Link to Site
+                </Button>
+              }
+            >
+              Flux Pay
+            </Header>
+          }
+        >
+          Fin-tech startup that provides a platform for businesses to manage
+          account receivables and payables. I designed and implemented the
+          entire cloud architecture on AWS, developed the React web application,
+          and implemented the backend services.
+        </Container>
         <Container
           header={
             <Header
@@ -78,6 +103,29 @@ export const Projects = () => {
           workflows for authentication and missing persons information
           submission.
         </Container>
+        <Container
+          header={
+            <Header
+              variant="h2"
+              description="Front End Contributions"
+              actions={
+                <Button
+                  href="https://deltaphiepsilon.net/"
+                  target="_blank"
+                  iconAlign="right"
+                  iconName="external"
+                >
+                  Link to Site
+                </Button>
+              }
+            >
+              Delta Phi Epsilon Professional Foreign Service Fraternity
+            </Header>
+          }
+        >
+          I oversaw the WordPress website administration and development.
+        </Container>
+        
       </SpaceBetween>
     </ContentLayout>
   );
