@@ -9,9 +9,8 @@ export const AboutMe: React.FunctionComponent<{
 }> = ({ footer }) => {
   return (
     <Container header={<Header variant="h2">About Me</Header>} footer={footer}>
-      I am currently a senior at Georgetown University studying Computer Science
-      and Mathematics. I am interested in full-stack development, machine
-      learning, and distributed systems. I also love learning about general
+      I am a full-stack software engineer interested in machine learning, cloud
+      computing, and distributed systems. I also love learning about general
       topics in computer science, mathematics, physics, aerospace engineering,
       and political philosophy. I hold the rank of blue belt in Brazilian Jiu
       Jitsu specializing in No-Gi.

@@ -27,7 +27,7 @@ export const Employment = () => {
           header={
             <Header
               variant="h2"
-              description="May 2023 - August 2023, Arlington, VA"
+              description="May 2023 - August 2023, July 2024 - Present, Arlington, VA"
               info={
                 <Link href="https://aws.amazon.com/" target="_blank">
                   Info
@@ -38,9 +38,13 @@ export const Employment = () => {
             </Header>
           }
         >
+          Software Development Engineer (L4) at AWS under Insights and
+          Optimizations, Commerce Platform.
+          <br />
           Software Development Engineer Intern at AWS under Insights and
           Optimizations, Commerce Platform.
         </Container>
+
         <Container
           header={
             <Header

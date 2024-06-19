@@ -40,26 +40,8 @@ export const Education = () => {
             </Header>
           }
         >
-          I am working toward a B.S in Mathematics and B.A in Computer Science
-          with a minor in Physics.
-        </Container>
-        <Container
-          header={
-            <Header
-              variant="h2"
-              description="August 2014 - May 2020"
-              info={
-                <Link href="https://gubei-en.suis.com.cn/" target="_blank">
-                  Info
-                </Link>
-              }
-            >
-              Shanghai United International School
-            </Header>
-          }
-        >
-          I attended SUIS Gubei for high school and graduated with an IB Diploma
-          (HL - Math, Physics, Chemistry. SL - English, Chinese, History).
+          I have a B.S in Mathematics and B.A in Computer Science with a minor
+          in Physics.
         </Container>
       </SpaceBetween>
     </ContentLayout>

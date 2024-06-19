@@ -43,7 +43,7 @@ export const Personal = () => {
             </Header>
           }
         >
-          I am from Shanghai, China and currently live in Washington, D.C.
+          I am from Shanghai, China and currently live in Arlington, VA.
         </Container>
       </SpaceBetween>
     </ContentLayout>

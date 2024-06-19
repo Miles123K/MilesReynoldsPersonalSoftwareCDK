@@ -28,11 +28,11 @@ export const Projects = () => {
       }
     >
       <SpaceBetween size="l">
-      <Container
+        <Container
           header={
             <Header
               variant="h2"
-              description="Fullstack Ownership"
+              description="Fullstack"
               actions={
                 <Button
                   href="https://getfluxpay.com/"
@@ -57,7 +57,7 @@ export const Projects = () => {
           header={
             <Header
               variant="h2"
-              description="Full Stack Contributions, Cloud Native System Design"
+              description="Full Stack"
               actions={
                 <Button
                   href="https://www.gainguard.io/"
@@ -82,7 +82,7 @@ export const Projects = () => {
           header={
             <Header
               variant="h2"
-              description="Frontend Contributions"
+              description="Frontend"
               actions={
                 <Button
                   href="https://lirissmile.com/"
@@ -107,7 +107,7 @@ export const Projects = () => {
           header={
             <Header
               variant="h2"
-              description="Front End Contributions"
+              description="Front End"
               actions={
                 <Button
                   href="https://deltaphiepsilon.net/"
@@ -123,9 +123,8 @@ export const Projects = () => {
             </Header>
           }
         >
-          I oversaw the WordPress website administration and development.
+          Oversaw the WordPress website administration and development.
         </Container>
-        
       </SpaceBetween>
     </ContentLayout>
   );
