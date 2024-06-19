@@ -45,7 +45,7 @@ export class ServiceStack extends Stack {
         tracingEnabled: true,
       },
       defaultCorsPreflightOptions: {
-        allowOrigins: ["*.miles123k.com", "https://miles123k.com"],
+        allowOrigins: ["*"],
         allowMethods: ["GET", "POST", "OPTIONS"],
       },
     });
